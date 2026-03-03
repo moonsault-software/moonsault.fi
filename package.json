@@ -1,0 +1,39 @@
+{
+  "name": "moonsault-fi",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --build && vite build",
+    "preview": "vite preview",
+    "lint": "run-s lint:*",
+    "lint:oxlint": "oxlint . --fix",
+    "lint:eslint": "eslint . --fix --cache",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "front-matter": "^4.0.2",
+    "marked": "^15.0.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.5",
+    "@types/node": "^25.3.3",
+    "@vitejs/plugin-vue": "^5.2.0",
+    "@vue/eslint-config-typescript": "^14.7.0",
+    "@vue/tsconfig": "^0.8.1",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-oxlint": "^1.48.0",
+    "eslint-plugin-vue": "^10.8.0",
+    "jiti": "^2.6.1",
+    "npm-run-all2": "^8.0.0",
+    "oxlint": "^1.48.0",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "vite": "^6.2.0",
+    "vue-tsc": "^2.2.0"
+  }
+}

@@ -1,0 +1,246 @@
+/* ============================================
+   Wrestling-inspired design elements
+   Subtle, professional references to
+   the sport of professional wrestling.
+   ============================================ */
+
+/* --- Ring Ropes Divider ---
+   Three parallel horizontal lines evoking
+   the three ropes of a wrestling ring. */
+
+.ropes-divider {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rope-gap);
+    margin: var(--space-lg) 0;
+    padding: var(--space-xs) 0;
+}
+
+.ropes-divider .rope {
+    display: block;
+    height: var(--rope-thickness);
+    background: var(--color-light-gray);
+    border-radius: 1px;
+}
+
+/* Gold variant */
+.ropes-divider.ropes-gold .rope {
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--color-gold) 15%,
+        var(--color-gold-light) 50%,
+        var(--color-gold) 85%,
+        transparent 100%
+    );
+}
+
+/* Subtle variant */
+.ropes-divider.ropes-subtle .rope {
+    background: var(--color-light-gray);
+    opacity: 0.5;
+}
+
+/* --- Turnbuckle Corner Accents ---
+   Small corner decorations that evoke
+   turnbuckle pads. */
+
+.turnbuckle-accent {
+    position: relative;
+}
+
+.turnbuckle-accent::before,
+.turnbuckle-accent::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--color-gold);
+}
+
+.turnbuckle-accent::before {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.turnbuckle-accent::after {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+}
+
+/* --- Championship Belt Divider ---
+   Centered ornamental divider inspired by
+   the center plate of a championship belt. */
+
+.belt-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin: var(--space-xl) 0;
+}
+
+.belt-divider::before,
+.belt-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.belt-divider .belt-plate {
+    width: 8px;
+    height: 8px;
+    background: var(--color-gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+}
+
+/* --- Mat Texture Background ---
+   Subtle canvas-like texture inspired by
+   wrestling ring mat material. */
+
+.mat-texture {
+    background-color: var(--color-off-white);
+    background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='%23e0e0dd' opacity='0.3'/%3E%3C/svg%3E");
+    background-size: 4px 4px;
+}
+
+/* --- Hero Gradient ---
+   Arena-spotlight inspired gradient. */
+
+.hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Footer Ropes ---
+   Three rope lines above the footer. */
+
+.footer-ropes {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.footer-ropes .rope {
+    display: block;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--color-gold-dark) 20%,
+        var(--color-gold) 50%,
+        var(--color-gold-dark) 80%,
+        transparent 100%
+    );
+}
+
+/* --- Blog Card Left Accent ---
+   Gold side stripe inspired by
+   championship belt side plates. */
+
+.blog-card {
+    border-left: 3px solid var(--color-gold);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    background: var(--color-white);
+    transition:
+        box-shadow var(--transition-normal),
+        transform var(--transition-normal);
+}
+
+.blog-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+/* --- Navbar Styling ---
+   Dark background (arena/backstage feel). */
+
+.navbar {
+    height: var(--navbar-height);
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+    color: var(--color-white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--color-gold-dark);
+}
+
+/* --- Blog Post Content Styling --- */
+
+.blog-post-content h1,
+.blog-post-content h2,
+.blog-post-content h3 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-md);
+}
+
+.blog-post-content h1 {
+    font-size: 2rem;
+}
+.blog-post-content h2 {
+    font-size: 1.5rem;
+}
+.blog-post-content h3 {
+    font-size: 1.25rem;
+}
+
+.blog-post-content p {
+    margin-bottom: var(--space-md);
+}
+
+.blog-post-content ul,
+.blog-post-content ol {
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-lg);
+}
+
+.blog-post-content li {
+    margin-bottom: var(--space-sm);
+}
+
+.blog-post-content code {
+    background: var(--color-light-gray);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.blog-post-content pre {
+    background: var(--color-charcoal);
+    color: var(--color-light-gray);
+    padding: var(--space-lg);
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: var(--space-md);
+}
+
+.blog-post-content pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+}
+
+.blog-post-content blockquote {
+    border-left: 3px solid var(--color-gold);
+    padding-left: var(--space-md);
+    margin-bottom: var(--space-md);
+    color: var(--color-gray);
+    font-style: italic;
+}
+
+.blog-post-content a {
+    color: var(--color-gold-dark);
+    text-decoration: underline;
+}
+
+.blog-post-content a:hover {
+    color: var(--color-gold);
+}
