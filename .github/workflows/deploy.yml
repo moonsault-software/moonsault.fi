@@ -6,11 +6,19 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repository
@@ -19,7 +27,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
@@ -28,26 +36,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Verify CNAME exists in output
-        run: |
-          if [ ! -f docs/CNAME ]; then
-            echo "ERROR: CNAME file missing from docs/"
-            exit 1
-          fi
-          echo "CNAME contents: $(cat docs/CNAME)"
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
 
-      - name: Verify .nojekyll exists in output
-        run: |
-          if [ ! -f docs/.nojekyll ]; then
-            echo "ERROR: .nojekyll file missing from docs/"
-            exit 1
-          fi
-
-      - name: Commit and push docs/
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/
-          git diff --cached --quiet && echo "No changes to commit" && exit 0
-          git commit -m "chore: build and deploy site"
-          git push
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
